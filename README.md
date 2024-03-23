@@ -9,6 +9,9 @@ enabling HomeKit support for the next generation of Shelly devices.
 
 For the first generation, see [homebridge-shelly](https://github.com/alexryd/homebridge-shelly).
 
+## Fork
+This fork adds the ability to use a shelly relay as a (door) lock in HomeKit.
+
 ## Supported devices
 
 * [Shelly Plus 1](https://shelly.cloud/shelly-plus-1/)
@@ -101,7 +104,7 @@ See below for descriptions of each configuration option.
 | `devices. hostname`             | The IP address or hostname of the device. Set this value if your device can't be discovered automatically. |
 | `devices. password`             | The password to use if authentication has been enabled for the device. |
 | `devices. switch:0-3.exclude`   | Set this option to `true` to prevent the switch with the specified index number from being added to HomeKit. |
-| `devices. switch:0-3.type`      | The type of accessory used to represent the switch with the specified index number. Available options are `"outlet"` and `"switch"` (default).
+| `devices. switch:0-3.type`      | The type of accessory used to represent the switch with the specified index number. Available options are `"outlet"`, `"lock"` and `"switch"` (default).
 | `devices. cover:0.exclude`      | Set this option to `true` to prevent this cover from being added to HomeKit. |
 | `devices. cover:0.type`         | Only available for devices in cover mode. The type of accessory used to represent the cover. Available options are `"door"`, `"window"` (default) and `"windowCovering"`.
 | `mdns`                          | Settings for the mDNS device discovery service. |

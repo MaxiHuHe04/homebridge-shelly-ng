@@ -59,7 +59,11 @@ export interface SwitchOptions {
   /**
    * The type of accessory used to represent the switch.
    */
-  type?: 'outlet' | 'switch';
+  type?: 'outlet' | 'switch' | 'lock';
+  /**
+   * The time in milliseconds after which the lock machanism should automatically be locked again.
+   */
+  autoLockTime?: number;
 }
 
 export interface CoverOptions {

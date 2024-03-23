@@ -8,6 +8,7 @@ import {
   OutletAbility,
   PowerMeterAbility,
   SwitchAbility,
+  LockAbility
 } from '../abilities';
 import { Accessory, AccessoryId } from '../accessory';
 import { DeviceLogger } from '../utils/device-logger';
@@ -184,6 +185,7 @@ export abstract class DeviceDelegate {
     // determine the switch tyoe
     const type = typeof switchOpts.type === 'string' ? switchOpts.type.toLowerCase() : 'switch';
     const isOutlet = type === 'outlet';
+    const isLock = type === 'lock';
 
     const id = o.single === true ? 'switch' : `switch-${swtch.id}`;
     const nameSuffix = o.single === true ? null : `Switch ${swtch.id + 1}`;
@@ -192,7 +194,8 @@ export abstract class DeviceDelegate {
       id,
       nameSuffix,
       new OutletAbility(swtch).setActive(isOutlet),
-      new SwitchAbility(swtch).setActive(!isOutlet),
+      new LockAbility(swtch, switchOpts.autoLockTime).setActive(isLock),
+      new SwitchAbility(swtch).setActive(!isOutlet && !isLock),
       // use the apower property to determine whether power metering is available
       new PowerMeterAbility(swtch).setActive(swtch.apower !== undefined),
     ).setActive(switchOpts.exclude !== true && o.active !== false);

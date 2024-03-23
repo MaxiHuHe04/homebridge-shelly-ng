@@ -8,3 +8,4 @@ export * from './readonly-switch';
 export * from './service-label';
 export * from './stateless-programmable-switch';
 export * from './switch';
+export * from './lock';

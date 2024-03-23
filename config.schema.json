@@ -100,9 +100,16 @@
                   "type": "string",
                   "oneOf": [
                     { "title": "Outlet", "enum": [ "outlet" ] },
+                    { "title": "Lock mechanism", "enum": [ "lock" ] },
                     { "title": "Switch", "enum": [ "switch" ] }
                   ],
                   "default": "switch"
+                },
+                "autoLockTime": {
+                  "title": "Automatic lock time",
+                  "description": "The time in milliseconds after which the lock machanism should automatically be locked again.",
+                  "type": "integer",
+                  "placeholder": "-1"
                 }
               }
             },
@@ -121,9 +128,16 @@
                   "type": "string",
                   "oneOf": [
                     { "title": "Outlet", "enum": [ "outlet" ] },
+                    { "title": "Lock mechanism", "enum": [ "lock" ] },
                     { "title": "Switch", "enum": [ "switch" ] }
                   ],
                   "default": "switch"
+                },
+                "autoLockTime": {
+                  "title": "Automatic lock time",
+                  "description": "The time in milliseconds after which the lock machanism should automatically be locked again.",
+                  "type": "integer",
+                  "placeholder": "-1"
                 }
               }
             },
@@ -142,9 +156,16 @@
                   "type": "string",
                   "oneOf": [
                     { "title": "Outlet", "enum": [ "outlet" ] },
+                    { "title": "Lock mechanism", "enum": [ "lock" ] },
                     { "title": "Switch", "enum": [ "switch" ] }
                   ],
                   "default": "switch"
+                },
+                "autoLockTime": {
+                  "title": "Automatic lock time",
+                  "description": "The time in milliseconds after which the lock machanism should automatically be locked again.",
+                  "type": "integer",
+                  "placeholder": "-1"
                 }
               }
             },
@@ -163,9 +184,16 @@
                   "type": "string",
                   "oneOf": [
                     { "title": "Outlet", "enum": [ "outlet" ] },
+                    { "title": "Lock mechanism", "enum": [ "lock" ] },
                     { "title": "Switch", "enum": [ "switch" ] }
                   ],
                   "default": "switch"
+                },
+                "autoLockTime": {
+                  "title": "Automatic lock time",
+                  "description": "The time in milliseconds after which the lock machanism should automatically be locked again.",
+                  "type": "integer",
+                  "placeholder": "-1"
                 }
               }
             },
@@ -231,7 +259,13 @@
           },
           "items": [
             "devices[].switch:0.exclude",
-            "devices[].switch:0.type"
+            "devices[].switch:0.type",
+            {
+              "key": "devices[].switch:0.autoLockTime",
+              "condition": {
+                "functionBody": "return model.devices[arrayIndices[0]]['switch:0'].type === 'lock'"
+              }
+            }
           ]
         },
         {
@@ -241,7 +275,13 @@
           },
           "items": [
             "devices[].switch:1.exclude",
-            "devices[].switch:1.type"
+            "devices[].switch:1.type",
+            {
+              "key": "devices[].switch:1.autoLockTime",
+              "condition": {
+                "functionBody": "return model.devices[arrayIndices[0]]['switch:1'].type === 'lock'"
+              }
+            }
           ]
         },
         {
@@ -251,7 +291,13 @@
           },
           "items": [
             "devices[].switch:2.exclude",
-            "devices[].switch:2.type"
+            "devices[].switch:2.type",
+            {
+              "key": "devices[].switch:2.autoLockTime",
+              "condition": {
+                "functionBody": "return model.devices[arrayIndices[0]]['switch:2'].type === 'lock'"
+              }
+            }
           ]
         },
         {
@@ -261,7 +307,13 @@
           },
           "items": [
             "devices[].switch:3.exclude",
-            "devices[].switch:3.type"
+            "devices[].switch:3.type",
+            {
+              "key": "devices[].switch:3.autoLockTime",
+              "condition": {
+                "functionBody": "return model.devices[arrayIndices[0]]['switch:3'].type === 'lock'"
+              }
+            }
           ]
         },
         {
