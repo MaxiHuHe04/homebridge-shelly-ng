@@ -1,12 +1,13 @@
 {
   "name": "homebridge-shelly-ng-maxi",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Homebridge plugin for the next generation of Shelly devices",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "lint": "eslint ./src --ext .ts,.js --max-warnings=0",
     "test": "jest",
+    "prepare": "npm run build",
     "preversion": "npm run build && npm run lint",
     "postversion": "git push && git push --tags"
   },
@@ -46,6 +47,6 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "shellies-ng": "^1.5.1"
+    "shellies-ng": "github:MaxiHuHe04/node-shellies-ng#reauth"
   }
 }

@@ -195,14 +195,19 @@ export abstract class Ability {
    * Returns a service for this ability.
    * If the platform accessory has a matching service, it will be returned. Otherwise, the service will be added.
    */
-  protected addService(): Service {
+  protected addService(): Service | null {
+    let service: Service | undefined;
+
     if (this.serviceName && this.serviceSubtype) {
-      return this.platformAccessory.getService(this.serviceName)
-        || this.platformAccessory.addService(this.serviceClass, this.serviceName, this.serviceSubtype);
+      service = this.platformAccessory.getService(this.serviceName);
+      if (service == null) {
+        service = this.platformAccessory.addService(this.serviceClass, this.serviceName, this.serviceSubtype);
+      }
+    } else {
+      service = this.platformAccessory.getService(this.serviceClass);
     }
 
-    return this.platformAccessory.getService(this.serviceClass)
-      || this.platformAccessory.addService(this.serviceClass);
+    return service ?? null;
   }
 
   /**
